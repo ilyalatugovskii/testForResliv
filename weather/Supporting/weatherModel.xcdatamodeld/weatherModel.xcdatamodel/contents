@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E266" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DailyForecastCD" representedClassName="DailyForecastCD" syncable="YES">
+        <attribute name="dayOfWeek" optional="YES" attributeType="String"/>
+        <attribute name="maxTemperature" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="minTemperature" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="hourlForecasts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HourlyForecastCD" inverseName="dailyForecasts" inverseEntity="HourlyForecastCD"/>
+        <relationship name="weatherInformations" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherInformationCD" inverseName="dailyForecasts" inverseEntity="WeatherInformationCD"/>
+    </entity>
+    <entity name="HourlyForecastCD" representedClassName="HourlyForecastCD" syncable="YES">
+        <attribute name="hour" optional="YES" attributeType="String"/>
+        <attribute name="temperature" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="dailyForecasts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyForecastCD" inverseName="hourlForecasts" inverseEntity="DailyForecastCD"/>
+    </entity>
+    <entity name="WeatherInformationCD" representedClassName="WeatherInformationCD" syncable="YES">
+        <attribute name="brefWeather" optional="YES" attributeType="String"/>
+        <attribute name="changeOfSnow" optional="YES" attributeType="String"/>
+        <attribute name="feelsLike" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="humidity" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nameOfCity" optional="YES" attributeType="String"/>
+        <attribute name="precipitation" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="pressure" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="sunRise" optional="YES" attributeType="String"/>
+        <attribute name="sunSet" optional="YES" attributeType="String"/>
+        <attribute name="temperature" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="todayConditions" optional="YES" attributeType="String"/>
+        <attribute name="uvIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="visibility" optional="YES" attributeType="String"/>
+        <attribute name="wind" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="dailyForecasts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DailyForecastCD" inverseName="weatherInformations" inverseEntity="DailyForecastCD"/>
+    </entity>
+    <elements>
+        <element name="HourlyForecastCD" positionX="164.7421875" positionY="111.03125" width="128" height="88"/>
+        <element name="WeatherInformationCD" positionX="-490.08203125" positionY="3.79296875" width="128" height="268"/>
+        <element name="DailyForecastCD" positionX="-195.5390625" positionY="206.765625" width="128" height="118"/>
+    </elements>
+</model>
